@@ -13,7 +13,7 @@ game_state.main.prototype = {
         game.load.image('sky', 'assets/sky.png');
         game.load.image('ground', 'assets/platform.png');
         game.load.image('star', 'assets/star.png');
-        game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
+        game.load.spritesheet('dude', 'assets/flappybird2.png', 244, 244);
 
 game.load.spritesheet('dude', 'assets/flappybird.png', 144, 144);
 
@@ -40,11 +40,13 @@ game.load.spritesheet('dude', 'assets/flappybird.png', 144, 144);
 
         this.player = game.add.sprite(32, game.world.height - 150, 'dude');
         game.physics.arcade.enable(this.player);
+        this.player.body.setSize(160,130,22, 21);
+        this.player.scale.setTo(0.5, 0.5);
         this.player.body.bounce.y = 0.7;
         this.player.body.gravity.y = 400;
         this.player.body.collideWorldBounds = true;
-        this.player.animations.add('left', [0, 1, 2, 3], 10, true);
-        this.player.animations.add('right', [5, 6, 7, 8], 10, true);
+        // this.player.animations.add('left', [0, 1, 2, 3], 10, true);
+        // this.player.animations.add('right', [5, 6, 7, 8], 10, true);
 
 
         this.cursors = game.input.keyboard.createCursorKeys();
@@ -63,10 +65,10 @@ game.load.spritesheet('dude', 'assets/flappybird.png', 144, 144);
             });
         
         
-        this.player.animations.add('left', [7, 8, 9, 10, 11], 10, true);
-        this.player.animations.add('right', [0, 1, 2, 3, 4, 5, 6], 10, true);
-            
-        
+        this.player.animations.add('left', [6, 7, 8, 9, 10], 10, true);
+        this.player.animations.add('right', [0, 1, 2, 3, 4, 5], 10, true);
+        this.player.body.bounce.y = 0.7;
+        this.player.body.gravity.y = 400;
 
     },
 
@@ -102,7 +104,7 @@ game.load.spritesheet('dude', 'assets/flappybird.png', 144, 144);
         
         
         
-        
+        game.debug.body(this.player);
         
         
     },
